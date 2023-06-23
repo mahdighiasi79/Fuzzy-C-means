@@ -21,12 +21,12 @@ def euclidean_distance(point1, point2):
 
 def belonging(k, i):
     k_th_record = np.array(df.iloc(0)[k])
-    i_th_centroid = np.array(centroids[i])
+    i_th_centroid = centroids[i]
     dist_k_i = euclidean_distance(k_th_record, i_th_centroid)
 
     u_ik = 0
     for center in centroids:
-        temp = euclidean_distance(k_th_record, np.array(center))
+        temp = euclidean_distance(k_th_record, center)
         temp = dist_k_i / temp
         temp = pow(temp, 2 / (1 - m))
         u_ik += temp
@@ -50,6 +50,18 @@ def fuzzy_c_means():
                 numerator += u * record
                 denominator += u
             centroids[c] = numerator / denominator
+
+
+def cluster(k):
+    record = np.array(df.iloc(0)[k])
+    nearest_center = -1
+    lowest_distance = np.inf
+    for i in range(C):
+        distance = euclidean_distance(centroids[i], record)
+        if distance <= lowest_distance:
+            lowest_distance = distance
+            nearest_center = i
+    return nearest_center
 
 
 if __name__ == '__main__':
