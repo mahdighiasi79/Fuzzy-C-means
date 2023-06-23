@@ -64,6 +64,14 @@ def cluster(k):
     return nearest_center
 
 
+def cost():
+    j = 0
+    for k in range(len(df)):
+        for i in range(C):
+            j += pow(belonging(k, i), m) * euclidean_distance(centroids[i], np.array(df.iloc(0)[k]))
+    return j
+
+
 if __name__ == '__main__':
     arr1 = np.array([1, 1, 2])
     arr2 = np.array([3, 0, 4])
