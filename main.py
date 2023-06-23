@@ -1,10 +1,11 @@
-import random
+import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import random
 
 num_iterations = 100
 C = 3
-m = 3
+m = 4
 
 df = pd.read_csv("data1.csv")
 dimension = len(df.iloc(0)[0])
@@ -73,7 +74,25 @@ def cost():
 
 
 if __name__ == '__main__':
-    arr1 = np.array([1, 1, 2])
-    arr2 = np.array([3, 0, 4])
-    arr2 += arr1
-    print(arr2)
+    # prev_cost = 1
+    # for p in range(2, 10):
+    #     for q in range(1, 10):
+    #         m = p
+    #         C = q
+    #         centroids = np.zeros((C, dimension))
+    #         fuzzy_c_means()
+    #         print("m:", m, "  C:", C)
+    #         new_cost = cost()
+    #         change_percentage = (1 - (new_cost / prev_cost)) * 100
+    #         print("change:", change_percentage, "%")
+    #         prev_cost = new_cost
+    #         print("///////////////////")
+
+    costs = []
+    for q in range(10):
+        C = q
+        fuzzy_c_means()
+        costs.append(cost())
+
+    plt.plot(costs, marker='o')
+    plt.show()
