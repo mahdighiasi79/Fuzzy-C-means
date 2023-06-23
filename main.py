@@ -7,7 +7,7 @@ num_iterations = 100
 C = 3
 m = 4
 
-df = pd.read_csv("data1.csv")
+df = pd.read_csv("data4.csv")
 dimension = len(df.iloc(0)[0])
 centroids = np.zeros((C, dimension))
 
@@ -88,50 +88,42 @@ if __name__ == '__main__':
     #         prev_cost = new_cost
     #         print("///////////////////")
 
-    # costs = []
-    # for q in range(1, 10):
-    #     C = q
-    #     centroids = np.zeros((C, dimension))
-    #     fuzzy_c_means()
-    #     costs.append(cost())
-    #
-    # costs = np.array(costs)
-    # plt.plot(costs, marker='o')
-    # plt.show()
+    costs = []
+    for q in range(1, 10):
+        C = q
+        centroids = np.zeros((C, dimension))
+        fuzzy_c_means()
+        costs.append(cost())
 
-    # first dataset
-    C = 2
-    m = 4
-    centroids = np.zeros((C, dimension))
-    fuzzy_c_means()
-    clusters = []
-    for p in range(len(df)):
-        clusters.append(cluster(p))
-
-    cluster1_x = []
-    cluster2_x = []
-    cluster3_x = []
-    cluster1_y = []
-    cluster2_y = []
-    cluster3_y = []
-    for p in range(len(df)):
-        if clusters[p] == 0:
-            cluster1_x.append(df.iloc(0)[p][0])
-            cluster1_y.append(df.iloc(0)[p][1])
-        elif clusters[p] == 1:
-            cluster2_x.append(df.iloc(0)[p][0])
-            cluster2_y.append(df.iloc(0)[p][1])
-        else:
-            cluster3_x.append(df.iloc(0)[p][0])
-            cluster3_y.append(df.iloc(0)[p][1])
-    cluster1_x = np.array(cluster1_x)
-    cluster2_x = np.array(cluster2_x)
-    cluster3_x = np.array(cluster3_x)
-    cluster1_y = np.array(cluster1_y)
-    cluster2_y = np.array(cluster2_y)
-    cluster3_y = np.array(cluster3_y)
-
-    plt.scatter(cluster1_x, cluster1_y, color="red")
-    plt.scatter(cluster2_x, cluster2_y, color="blue")
-    plt.scatter(cluster3_x, cluster3_y, color="green")
+    costs = np.array(costs)
+    plt.plot(costs, marker='o')
     plt.show()
+
+    # first dataset and second datasets
+    # C = 2
+    # m = 4
+    # centroids = np.zeros((C, dimension))
+    # fuzzy_c_means()
+    # clusters = []
+    # for p in range(len(df)):
+    #     clusters.append(cluster(p))
+    #
+    # cluster1_x = []
+    # cluster2_x = []
+    # cluster1_y = []
+    # cluster2_y = []
+    # for p in range(len(df)):
+    #     if clusters[p] == 0:
+    #         cluster1_x.append(df.iloc(0)[p][0])
+    #         cluster1_y.append(df.iloc(0)[p][1])
+    #     else:
+    #         cluster2_x.append(df.iloc(0)[p][0])
+    #         cluster2_y.append(df.iloc(0)[p][1])
+    # cluster1_x = np.array(cluster1_x)
+    # cluster2_x = np.array(cluster2_x)
+    # cluster1_y = np.array(cluster1_y)
+    # cluster2_y = np.array(cluster2_y)
+    #
+    # plt.scatter(cluster1_x, cluster1_y, color="red")
+    # plt.scatter(cluster2_x, cluster2_y, color="blue")
+    # plt.show()
