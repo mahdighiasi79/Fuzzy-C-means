@@ -88,18 +88,18 @@ if __name__ == '__main__':
     #         prev_cost = new_cost
     #         print("///////////////////")
 
-    costs = []
-    for q in range(1, 10):
-        C = q
-        centroids = np.zeros((C, dimension))
-        fuzzy_c_means()
-        costs.append(cost())
+    # costs = []
+    # for q in range(1, 10):
+    #     C = q
+    #     centroids = np.zeros((C, dimension))
+    #     fuzzy_c_means()
+    #     costs.append(cost())
+    #
+    # costs = np.array(costs)
+    # plt.plot(costs, marker='o')
+    # plt.show()
 
-    costs = np.array(costs)
-    plt.plot(costs, marker='o')
-    plt.show()
-
-    # first dataset and second datasets
+    # first and third datasets
     # C = 2
     # m = 4
     # centroids = np.zeros((C, dimension))
@@ -127,3 +127,51 @@ if __name__ == '__main__':
     # plt.scatter(cluster1_x, cluster1_y, color="red")
     # plt.scatter(cluster2_x, cluster2_y, color="blue")
     # plt.show()
+
+    # fourth dataset
+    C = 3
+    m = 12
+    centroids = np.zeros((C, dimension))
+    fuzzy_c_means()
+    clusters = []
+    for p in range(len(df)):
+        clusters.append(cluster(p))
+
+    cluster1_x = []
+    cluster2_x = []
+    cluster3_x = []
+    cluster1_y = []
+    cluster2_y = []
+    cluster3_y = []
+    cluster1_z = []
+    cluster2_z = []
+    cluster3_z = []
+    for p in range(len(df)):
+        if clusters[p] == 0:
+            cluster1_x.append(df.iloc(0)[p][0])
+            cluster1_y.append(df.iloc(0)[p][1])
+            cluster1_z.append(df.iloc(0)[p][2])
+        elif clusters[p] == 1:
+            cluster2_x.append(df.iloc(0)[p][0])
+            cluster2_y.append(df.iloc(0)[p][1])
+            cluster2_z.append(df.iloc(0)[p][2])
+        else:
+            cluster3_x.append(df.iloc(0)[p][0])
+            cluster3_y.append(df.iloc(0)[p][1])
+            cluster3_z.append(df.iloc(0)[p][2])
+    cluster1_x = np.array(cluster1_x)
+    cluster2_x = np.array(cluster2_x)
+    cluster3_x = np.array(cluster3_x)
+    cluster1_y = np.array(cluster1_y)
+    cluster2_y = np.array(cluster2_y)
+    cluster3_y = np.array(cluster3_y)
+    cluster1_z = np.array(cluster1_z)
+    cluster2_z = np.array(cluster2_z)
+    cluster3_z = np.array(cluster3_z)
+
+    fig = plt.figure(figsize=(10, 7))
+    ax = plt.axes(projection="3d")
+    ax.scatter(cluster1_x, cluster1_y, cluster1_z, color="red")
+    ax.scatter(cluster2_x, cluster2_y, cluster2_z, color="green")
+    ax.scatter(cluster3_x, cluster3_y, cluster3_z, color="blue")
+    plt.show()
