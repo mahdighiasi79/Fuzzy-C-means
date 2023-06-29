@@ -1,7 +1,7 @@
 # Fuzzy-C-means
 In this project, we aim to cluster some generated data points.
-We have used C-means clustering algorithm for our task which works based on Fuzzy logic.
-In C-meas algorithm, each data point belongs to all of the culsters. But the degree of belongings differe.
+We have used the C-means clustering algorithm for our task which works based on Fuzzy logic.
+In the C-means algorithm, each data point belongs to all of the clusters. But the degree of belongings differe.
 We determine the degree of belonging of a given data point to a given cluster based on its proximity to the cluster center and compare it with its proximity to other cluster centers.
 The following is the formula for calculating the belonging degree of the k-th data point to the i-th cluster:
 
@@ -20,13 +20,13 @@ The three above steps will be repeated in a loop until the clusters become stabl
 For evaluation of the clustering task, we used the sum of squared distances between data points and cluster centers.
 The following shows our loss function formula:
 
-![image](https://github.com/mahdighiasi79/Fuzzy-C-means/assets/51015907/da4fd674-8b4d-423c-88c6-91ae7da725a5)
+![image](https://github.com/mahdighiasi79/Fuzzy-C-means/assets/51015907/d8f597ef-63c1-406d-b8a3-ee40a970f181)
 
 
 For finding the optimal number of clusters for each dataset, we used the Elbow method.
 
 The following charts illustrate the loss function quantity with respect to the number of clusters for each dataset.
-The clustered data points have also been plotted. (the data points in the second dataset have four dimensions. So, plotting them is not possible.
+The clustered data points have also been plotted. (The data points in the second dataset have four dimensions. So, plotting them is not possible.)
 
 
 The first dataset:
