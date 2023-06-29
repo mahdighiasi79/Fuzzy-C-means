@@ -11,10 +11,17 @@ The following is the formula for calculating the belonging degree of the k-th da
 The following steps represent the algorithm:
 1- At first, we determine cluster centers randomly.
 2- Then we will determine the belonging degree of each point to each of the clusters.
-3- Finally, we will update the cluster centers based on the calculated belonging degrees of each point.
+3- Finally, we will update the cluster centers based on the calculated belonging degrees of each point (the following is the formula).
+
+![image](https://github.com/mahdighiasi79/Fuzzy-C-means/assets/51015907/b0df56a4-f8e7-4da7-9943-dc70bcde14fb)
+
 The three above steps will be repeated in a loop until the clusters become stable. (say 100 times)
 
 For evaluation of the clustering task, we used the sum of squared distances between data points and cluster centers.
+The following shows our loss function formula:
+
+![image](https://github.com/mahdighiasi79/Fuzzy-C-means/assets/51015907/da4fd674-8b4d-423c-88c6-91ae7da725a5)
+
 
 For finding the optimal number of clusters for each dataset, we used the Elbow method.
 
